@@ -5,6 +5,12 @@
   <div class="col-12 my-5">
     <app-loading *ngIf="loading"></app-loading>
 
+    <div *ngIf="error" class="alert alert-danger">
+      <h3>Error</h3>
+      <p>{{mensajeError}}</p>
+    </div>
+    
+
     <div class="card-columns">
 
       <div class="card" *ngFor="let artista of arrayArtistas">

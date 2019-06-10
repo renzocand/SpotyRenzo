@@ -10,9 +10,12 @@ export class HomeComponent implements OnInit {
 
   tracksArray:any[] = [];
   loading = true;
+  error:boolean;
+  mensajeError:string;
 
   constructor(private _ss:SpotifyService) { 
-
+    this.error = false;
+    // this._ss.obtenerToken().subscribe(data=>console.log(data))
   }
 
   ngOnInit() {
@@ -22,7 +25,13 @@ export class HomeComponent implements OnInit {
         this.tracksArray.push(tracks['track']);
       })
       // console.log(this.tracksArray);
+    },(error:any)=>{
+      this.error = true;
+      this.loading = false;
+      this.mensajeError = error.error.error.message
     })
   }
+
+
 
 }

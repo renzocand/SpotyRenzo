@@ -7,16 +7,29 @@ import { map } from 'rxjs/operators';
 })
 export class SpotifyService {
 
-  constructor(private http:HttpClient) { }
+  token:string;
+
+  constructor(private http:HttpClient) {
+    this.obtenerToken().subscribe(data=>{
+      this.token = data;
+      localStorage.setItem("token", this.token)
+    })
+   }
 
   getQuery(query:string){
 
-    let token:string = 'BQD7eWwbTcKMsnveFVIq-a7Y1iifhFGjpIfp2UpRXnloWw3IpL9JyIb19IQJGE60rEJlMvo7W3zDfvc-W8c';
+    let token:string = this.token;
 
     const headers= new HttpHeaders({
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     })
     return this.http.get(`https://api.spotify.com/v1/${query}`, {headers})
+  }
+
+  obtenerToken(){
+     return this.http.get('http://localhost:3000/spotify/615384c835514cf6931dcb4a07b2e2e3/cf78f9b0467f4934be3055f7e3407d94').pipe(map(
+       data=>data['access_token']
+     ))
   }
 
   getPlayList(){
