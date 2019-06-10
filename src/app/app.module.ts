@@ -13,6 +13,7 @@ import { RecomendacionesComponent } from './pages/recomendaciones/recomendacione
 import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 import { NoimagePipe } from './pipes/noimage.pipe';
 import { LoadingComponent } from './components/loading/loading.component';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { LoadingComponent } from './components/loading/loading.component';
     TarjetasComponent,
     NoimagePipe,
     LoadingComponent,
+    DomseguroPipe,
   ],
   imports: [
     BrowserModule,
