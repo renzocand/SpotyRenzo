@@ -1,0 +1,17 @@
+<div class="card-columns">
+
+  <div class="card" *ngFor="let cancion of items">
+    <img [src]="cancion.album.images[0].url" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{cancion.name}}</h5>
+      <span class="badge badge-pill badge-primary" *ngFor="let artista of cancion.artists">{{artista.name}}</span>
+
+      <button *ngIf="isHome()" (click)="irParecidas(cancion.id)" class="btn btn-info btn-block mt-5">
+        Ver canciones parecidas
+      </button>
+      
+    </div>
+  </div>
+</div>
+
+

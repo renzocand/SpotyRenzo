@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col">
+    <input type="text" class="form-control" placeholder="Buscar Artista" (keyup)="buscarArtista(buscar.value)" #buscar>
+  </div>
+  <div class="col-12 my-5">
+    <app-loading *ngIf="loading"></app-loading>
+
+    <div class="card-columns">
+
+      <div class="card" *ngFor="let artista of arrayArtistas">
+        <img [src]="artista.images | noimage" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{artista.name}}</h5>
+          <span class="badge badge-pill badge-primary" *ngFor="let genero of artista.genres">{{genero}}</span>
+    
+          <a href="artista.external_urls.spotify" class="btn btn-info btn-block mt-5">
+            Ver Artista
+          </a>
+          
+        </div>
+      </div>
+    </div>     
+  </div>
+</div>
